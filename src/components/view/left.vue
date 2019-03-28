@@ -13,8 +13,7 @@ export default {
         current:0,
             todos: [
             { text: '首页' ,url:"home"},
-            { text: '选项二',url:"home" },
-            { text: '选项三',url:"home" }
+            { text: '测试vuex',url:"ceshi" }
         ]
       }
     },

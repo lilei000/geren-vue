@@ -33,10 +33,12 @@
 <style scoped>
 .header_top{
     border-bottom: 1px solid #279893;
+    background-color: #21d3ce;
 }
 .body_left{
   border-right: 1px solid #279893;
-  background-color: #294c4b;
+  background-color: #21d3ce;
+  text-align: center;
 }
 body{
   position: absolute;
@@ -45,6 +47,6 @@ body{
 }
 .home_body{
   height: 100%;
-  background-color: #1c3332;
+  // background-color: #1c3332;
 }
 </style>

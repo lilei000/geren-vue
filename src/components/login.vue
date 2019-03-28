@@ -77,6 +77,7 @@
 <script>
   // import {app} from 'js/app.js';
   // import {particlesmin} from 'js/particles.min.js';
+  import {mapActions} from 'vuex'
 export default {
   name: 'login',
   data () {
@@ -132,11 +133,10 @@ export default {
   mounted: function() {
   },
   methods:{
+    ...mapActions(['logins','zhuces','yanzhengmas']),
     denglu(){
       var post = {username:this.username,password:this.password}
-      this.$ajax.post('/api/login/denglu',
-             post,
-          ).then(data => {
+      this.logins(post).then(data => {
             if(data.ok){
               localStorage.setItem("token",data.token); 
               localStorage.setItem("usename",data.name);
@@ -156,9 +156,7 @@ export default {
     add(form){
       this.$refs[form].validate((valid) => {
           if (valid) {
-            this.$ajax.post('/api/login/zhuce',
-                   this.form,
-                ).then(data => {            
+            this.zhuces(this.form).then(data => {            
                   if(data.ok){
                     this.dialogFormVisible = false;
                     this.$message({
@@ -185,9 +183,7 @@ export default {
       var _this = this;
       if(this.form.youxiang != ""){
         let post = {youxiang:this.form.youxiang}
-        this.$ajax.post('/api/login/yanzhengma',
-               post,
-            ).then(data => {
+        this.yanzhengmas(post).then(data => {
               if(data.ok) {//请求成功
                     if(!_this.canClick) return//判断是否需要倒计时
                       _this.canClick = false;

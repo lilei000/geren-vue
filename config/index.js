@@ -12,8 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         '/api/': {
-        target: 'http://lilei8.com:3002',  // 通过本地服务器将你的请求转发到这个地址
-        // target: 'http://localhost:3002', 
+        // target: 'http://lilei8.com:3002',  // 通过本地服务器将你的请求转发到这个地址
+        target: 'http://localhost:3002', 
         changeOrigin: true,  // 设置这个参数可以避免跨域
         pathRewrite: {
           '^/api/': '/api/'

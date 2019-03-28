@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from './axios/request.js'
@@ -17,6 +18,20 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
+router.beforeEach((to, from, next) => {
+ if (to.path == '/'){ // 判断该路由是否需要登录权限
+	 next();
+ }
+ else {
+     if (localStorage.getItem("token")) { // 判断当前的token是否存在
+	  next();
+	 }
+	 else {
+		  next({path: '/'})
+	 }
+ }
+});
